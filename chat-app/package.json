@@ -5,9 +5,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest --config ./vitest.config.ts",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.11"
+    "@nuxt/test-utils-edge": "^3.0.0-rc.12-27736489.2e080c2",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "jsdom": "^20.0.0",
+    "nuxt": "3.0.0-rc.11",
+    "vitest": "^0.23.4"
   }
 }
