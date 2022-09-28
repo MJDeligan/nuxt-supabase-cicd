@@ -1,5 +1,8 @@
 name: test-nuxt
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   test-application:
     runs-on: ubuntu-latest
