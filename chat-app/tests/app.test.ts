@@ -13,5 +13,11 @@ describe("My Test", async () => {
     expect(body).toBeTruthy();
     expect(body.param).toBeTruthy();
     expect(body.param).toBe("hello");
+
+    const res = await $fetch('/api/pathTest/myParam');
+
+    expect(res).toBeTruthy();
+    expect(res.param).toBeTruthy();
+    expect(res.param).toBe("myParam");
   });
 });
