@@ -37,6 +37,9 @@ jobs:
       - name: Run e2e tests
         run: npm run e2e
       - name: Deploy migrations
-        run: npx prisma migrate deploy
+        run: |
+          echo $TEST_VARIABLE
+          npx prisma migrate deploy
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          TEST_VARIABLE: "hello"
