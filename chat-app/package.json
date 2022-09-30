@@ -6,8 +6,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest --config ./vitest.config.ts",
-    "e2e": "npx prisma migrate dev & vitest --config ./vitest.config.ts",
+    "test": "vitest --config ./vitest.integration.config.ts",
+    "e2e": "npx prisma migrate dev & vitest --config ./vitest.e2e.config.ts",
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {

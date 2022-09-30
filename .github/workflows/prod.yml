@@ -32,8 +32,6 @@ jobs:
         run: npx prisma migrate dev
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      - name: Generate Client
-        run: npx prisma generate
       - name: Run e2e tests
         run: npm run e2e
         env:
