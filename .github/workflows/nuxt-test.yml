@@ -1,8 +1,7 @@
 name: test-nuxt
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types: [opened, reopened]
 jobs:
   test-application:
     runs-on: ubuntu-latest
