@@ -48,6 +48,8 @@ jobs:
   deploy-migrations:
     runs-on: ubuntu-latest
     needs: [run-e2e-test]
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     defaults:
       run:
         working-directory: ./chat-app
