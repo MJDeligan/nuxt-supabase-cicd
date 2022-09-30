@@ -1,5 +1,5 @@
 export default defineEventHandler((event) => {
   return {
-    param: event.context.params.param
-  }
+    param: event.context.params.param,
+  };
 });
