@@ -24,12 +24,3 @@ With Github Workflows I'll make sure that the code that makes it to production i
 ## The application
 
 The application will be a simple messenger-type app. Authenticated users will be able to add messages. Anyone can see the messages of the last ten minutes. The messages will be updated in realtime, no need for refreshs.
-
-## Setup
-
-Create a new Supabase project on the supabase website.
-
-### Nuxt
-1. Run `npx nuxi init chat-app` in the command line.
-2. Run `cd chat-app`.
-3. Run `npm i`.
