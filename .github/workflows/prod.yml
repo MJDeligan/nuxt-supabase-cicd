@@ -36,10 +36,10 @@ jobs:
         run: npx prisma generate
       - name: Run e2e tests
         run: npm run e2e
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       - name: Deploy migrations
-        run: |
-          echo $TEST_VARIABLE
+        run:
           npx prisma migrate deploy
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          TEST_VARIABLE: "hello"
