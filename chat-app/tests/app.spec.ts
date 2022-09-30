@@ -8,13 +8,13 @@ describe("My Test", async () => {
   test("app built", async () => {
     expect(App).toBeTruthy();
 
-    const body = await $fetch('/api/test');
-    
+    const body = await $fetch("/api/test");
+
     expect(body).toBeTruthy();
     expect(body.param).toBeTruthy();
     expect(body.param).toBe("hello");
 
-    const res = await $fetch('/api/pathTest/myParam');
+    const res = await $fetch("/api/pathTest/myParam");
 
     expect(res).toBeTruthy();
     expect(res.param).toBeTruthy();
