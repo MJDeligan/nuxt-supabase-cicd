@@ -3,19 +3,24 @@ on:
   push:
     branches:
       - master
+   
 jobs:
-  start-supabase:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: supabase/setup-cli@v1
-      - name: Start supabase
-        run: supabase start
-  install-dependencies:
+  deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./chat-app
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -23,48 +28,15 @@ jobs:
           node-version: '14'
       - name: Install dependencies
         run: npm i
-  run-prisma-migrations:
-    runs-on: ubuntu-latest
-    needs: [start-supabase, install-dependencies]
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:54322/postgres
-    defaults:
-      run:
-        working-directory: ./chat-app
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
       - name: Run migration
         run: npx prisma migrate dev
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
       - name: Generate Client
         run: npx prisma generate
-  run-e2e-test:
-    runs-on: ubuntu-latest
-    needs: [run-prisma-migrations]
-    defaults:
-      run:
-        working-directory: ./chat-app
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
       - name: Run e2e tests
         run: npm run e2e
-  deploy-migrations:
-    runs-on: ubuntu-latest
-    needs: [run-e2e-test]
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-    defaults:
-      run:
-        working-directory: ./chat-app
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
       - name: Deploy migrations
         run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
