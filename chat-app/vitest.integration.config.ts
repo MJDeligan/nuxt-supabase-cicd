@@ -5,7 +5,7 @@ export default {
   test: {
     globals: true,
     environment: 'jsdom',
-    exclude: ['**/e2e.spec.ts'],
+    exclude: ['**/e2e.spec.ts', '**/node_modules/**'],
     deps: {
       inline: [/@nuxt\/test-utils-edge/],
     },
