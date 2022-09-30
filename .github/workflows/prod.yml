@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: supabase/setup-cli
+      - uses: supabase/setup-cli@v1
       - name: Start supabase
         run: supabase start
   install-dependencies:
