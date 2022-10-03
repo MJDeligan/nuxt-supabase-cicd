@@ -10,12 +10,14 @@
     "e2e": "npx prisma migrate dev & vitest --config ./vitest.e2e.config.ts",
     "coverage": "vitest run --coverage",
     "lint": "eslint --ext .ts,.js,.vue .",
-    "fix-lint": "eslint --ext .ts,.js,.vue . --fix"
+    "fix-lint": "eslint --ext .ts,.js,.vue . --fix",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@nuxt/test-utils-edge": "^3.0.0-rc.12-27736489.2e080c2",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@vitejs/plugin-vue": "^3.1.0",
+    "cypress": "^10.9.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
