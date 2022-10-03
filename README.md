@@ -51,6 +51,6 @@ While CI is important it doesn't actually ship any product to costumers. Everyth
 
 Most of the time, when developing small to mid size projects, changes to Supabase and Nuxt are synchronized, since people are working on both for their features. In order to assure that the necessary changes are also deployed to both, we deploy them using a Github Action that runs when changes are pushed to main. This way, we do not risk someone forgetting to deploy changes to one production environment and breaking the application. It also allows us to run e2e tests to ensure that the application we deploy works and fulfills its requirements.
 
-## The application
+From past projects I know that while Supabase allows for fast development, this can lead to problems down the road. If features aren't developed locally and instead on the production Supabase instance, conflicts very quickly arise when developing in parallel with others. A common example would be a feature requiring the addition of a column in a table. When trying to query that table another developer may be getting errors because their code doesn't handle this new column yet.
 
 At this point, the application doesn't do really do anything. Since this is more about the CI/CD I develop a couple of features to test the CI/CD process, but ultimately there is no point to this application other than to show off the integration between the technologies and how that integration can be reasonably handled with CI/CD processes.
