@@ -2,11 +2,11 @@
 # has been e2e-tested on the master branch
 name: deploy
 on:
-  workflow_run: ["e2e"]
-  types:
-    - completed
-  branches:
-    - master
+  workflow_run:
+    workflows: ["e2e"]
+    types: [completed]
+    branches:
+      - master
     
    
 jobs:
