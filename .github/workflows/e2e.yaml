@@ -1,11 +1,11 @@
-name: prod
+name: e2e
 on:
   push:
     branches:
       - master
    
 jobs:
-  deploy:
+  e2e:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -36,8 +36,3 @@ jobs:
         run: npm run e2e
         env:
           DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-      - name: Deploy migrations
-        run:
-          npx prisma migrate deploy
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
