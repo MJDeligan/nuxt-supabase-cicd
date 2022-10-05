@@ -54,3 +54,11 @@ Most of the time, when developing small to mid size projects, changes to Supabas
 From past projects I know that while Supabase allows for fast development, this can lead to problems down the road. If features aren't developed locally and instead on the production Supabase instance, conflicts very quickly arise when developing in parallel with others. A common example would be a feature requiring the addition of a column in a table. When trying to query that table another developer may be getting errors because their code doesn't handle this new column yet.
 
 At this point, the application doesn't do really do anything. Since this is more about the CI/CD I develop a couple of features to test the CI/CD process, but ultimately there is no point to this application other than to show off the integration between the technologies and how that integration can be reasonably handled with CI/CD processes.
+
+## Drawbacks
+
+### Rollbacks
+
+One of the problems that might arise is that one of the deploys succeeds, but the other one doesn't. We might successfully deploy our migrations to Supabase, but our Vercel deployment fails. This results in a version mismatch between frontend and backend. We would thus need to roll back the migrations applied to Supabase in order to realign the releases. Vercel succeeding and Supabase failing is of course also a possibility and would require us to roll back changes to the application deployed on Vercel.
+
+With the way that down migrations currently work with Prisma, rolling back the migrations in case the Vercel deployment fails is not an easy process.
