@@ -59,6 +59,30 @@ At this point, the application doesn't do really do anything. Since this is more
 
 ### Rollbacks
 
+[![My Skills](https://skillicons.dev/icons?i=prisma)](https://www.prisma.io/)
+
 One of the problems that might arise is that one of the deploys succeeds, but the other one doesn't. We might successfully deploy our migrations to Supabase, but our Vercel deployment fails. This results in a version mismatch between frontend and backend. We would thus need to roll back the migrations applied to Supabase in order to realign the releases. Vercel succeeding and Supabase failing is of course also a possibility and would require us to roll back changes to the application deployed on Vercel.
 
-With the way that down migrations currently work with Prisma, rolling back the migrations in case the Vercel deployment fails is not an easy process.
+With the way that down migrations currently work with Prisma, rolling back the migrations in case the Vercel deployment fails is not an easy process and requires a lot of human intervention or automation based on unstable parameters.
+
+
+### Lack of cross schema capabilities
+
+[![My Skills](https://skillicons.dev/icons?i=prisma)](https://www.prisma.io/)
+
+Prisma currently does not support cross schema references. This makes working with users in Supabase harder, because the `users` table is located in the `auth` schema in Supabase.
+We can therefore not directly reference the auth-users in our Prisma schema. An association between the tables has to be made implicitly with SQL-triggers, which is harder to maintain and also makes for a harder setup for new devs. This also ties in with the next drawback.
+
+
+### Long actions
+
+[![My Skills](https://skillicons.dev/icons?i=supabase)](https://www.supabase.com/)
+
+
+The e2e-test workflow which is run on every push to main needs to spin up a supabase instance. Setting up the supabase cli is easy and fast but spinning up the instance is slow. Ideally this could be optimized when run in a CI-context, where certain parts of supabase aren't needed (the dashboard, in our case the Postgrest API, etc.).
+
+## Conclusion
+
+The integration of Nuxt, Supabase and Prisma is possible and can definitely be useful for smaller projects with few developers. The drawbacks however can impact developer experience very negatively. The weakest link here is definitely Prisma in this regard, since it still lacks a lot of things that would make a viable stand-alone database management and querying tool for bigger projects. The lack of cross-schema capabilities poses the biggest challenge, but the hassle of down migrations cannot be overlooked either.
+
+In the future I may redo this with much of the same features, but using Type-ORM instead of Prisma. From reading the documentation it seems to adress the pain points of Prisma and is overall a more mature framework. 
