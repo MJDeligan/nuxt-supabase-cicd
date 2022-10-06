@@ -11,7 +11,8 @@
     "coverage": "vitest run --coverage",
     "lint": "eslint --ext .ts,.js,.vue .",
     "fix-lint": "eslint --ext .ts,.js,.vue . --fix",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "prisma:down": "npx prisma migrate diff --from-schema-datamodel prisma/schema.prisma --to-schema-datasource prisma/schema.prisma --script > prisma/down.sql"
   },
   "devDependencies": {
     "@nuxt/test-utils-edge": "^3.0.0-rc.12-27736489.2e080c2",
