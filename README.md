@@ -18,9 +18,11 @@
   </a>
 </p>
 
-This is a demo project combining the above mentioned Technologies into a Stack to create a small Web Application. I'll be using a lot of the features offered by [Nuxt 3](https://v3.nuxtjs.org/), [Supabase](https://supabase.com/) and [Prisma](https://www.prisma.io/) and setup [workflows](https://github.com/features/actions) for the repo to garantee smooth development.
+This is a demo project combining the above mentioned Technologies into a Stack to create a small Web Application. I'll be using some of the features offered by [Nuxt 3](https://v3.nuxtjs.org/), [Supabase](https://supabase.com/) and [Prisma](https://www.prisma.io/) and setup [workflows](https://github.com/features/actions) for the repo to garantee smooth development.
 
 The focus of this project will be on the CI/CD, using all the options given by Prisma and Supabase and combining them with the power of Github Actions.
+
+:heavy_exclamation_mark::x: This is not a real application. It is only a demon of integrating the technologies with CI/CD with no real functionality.
 ___
 
 ## CI/CD
